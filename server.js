@@ -1,3 +1,4 @@
+"use strict"
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -16,6 +17,7 @@ app.post('/event', (req, res) => {
     const name = req.body.name;
     const emoji = req.body.emoji;
     const category = req.body.category;
+    const startTime = req.body.time
     currentID++;
     data.set(currentID, {
         "id": currentID,
@@ -24,6 +26,8 @@ app.post('/event', (req, res) => {
         "name": name,
         "emoji": emoji,
         "category": category,
+        "time": startTime,
+        "description": description,
         "going": 1
     })
     res.send({ "id": currentID });

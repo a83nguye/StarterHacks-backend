@@ -1,6 +1,6 @@
 const request = require("request");
 request.post(
-    'http://localhost/event',
+    'http://34.235.94.25/event',
     {
         json: {
             "lat": 2,
