@@ -7,7 +7,9 @@ request.post(
             "long": 4,
             "name": "Test",
             "emoji": "Emoji",
-            "category": "Tech"
+            "category": "Tech",
+            "time": "Now",
+            "description": "Does stuff",
         }
     },
     function (error, response, body) {

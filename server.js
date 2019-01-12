@@ -18,6 +18,7 @@ app.post('/event', (req, res) => {
     const emoji = req.body.emoji;
     const category = req.body.category;
     const startTime = req.body.time
+    const description = req.body.description
     currentID++;
     data.set(currentID, {
         "id": currentID,
