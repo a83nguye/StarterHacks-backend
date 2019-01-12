@@ -3,13 +3,15 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const data = new Map();
+const detailedData = new Map();
 let currentID = 0;
 app.use(bodyParser.json());
 app.get('/', (req, res) => {
-    console.log(data.values())
     res.send(Array.from(data.values()));
 });
-
+app.post('/info', (req, res) => {
+    res.send(Array.from(detailedData.values()));
+})
 app.post('/event', (req, res) => {
     console.log("got post!")
     const lat = req.body.lat;
@@ -24,8 +26,11 @@ app.post('/event', (req, res) => {
         "id": currentID,
         "lat": lat,
         "long": long,
+        "emoji": emoji
+    })
+    detailedData.set(currentID, {
+        "id": currentID,
         "name": name,
-        "emoji": emoji,
         "category": category,
         "time": startTime,
         "description": description,
@@ -36,13 +41,13 @@ app.post('/event', (req, res) => {
 
 app.post('/going', (req, res) => {
     const eventID = req.body.id;
-    const event = data.get(eventID);
+    const event = detailedData.get(eventID);
     if (!event) {
         res.sendStatus(404);
         return;
     }
     event.going++;
-    data.set(eventID, event);
+    detailedData.set(eventID, event);
     res.sendStatus(200);
 });
-app.listen(80, () => console.log('Gator app listening on port 3000!'));
+app.listen(80, () => console.log('Event app listening!'));
