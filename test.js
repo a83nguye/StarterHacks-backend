@@ -3,13 +3,13 @@ request.post(
     'http://34.235.94.25/event',
     {
         json: {
-            "lat": 2,
-            "long": 4,
-            "name": "Test",
+            "lat": 43.472286,
+            "long": -80.544861,
+            "name": "Test Data",
             "emoji": "Emoji",
             "category": "Tech",
-            "time": "Now",
-            "description": "Does stuff",
+            "time": new Date().toISOString(),
+            "description": "Teeeeeeeeeeeeeeeeeeeeeest dataaaaaaaaaaaaaaaaa"
         }
     },
     function (error, response, body) {
